@@ -1,0 +1,17 @@
+import java.io.File;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+
+public class DelAOSPTmpFiles{
+    public static void main(String[] args) throws Exception{
+        Runtime.getRuntime().exec("sudo updatedb").waitFor();
+        Process p = Runtime.getRuntime().exec("locate tmp_pa");
+        BufferedReader br = new BufferedReader(new InputStreamReader(p.getInputStream()));
+        for(String str=br.readLine(); str!=null; str=br.readLine()){
+            System.out.print(str + "\t");
+            System.out.println(new File(str).delete());
+        }
+        br.close();
+        p.destroy();
+    }
+}
