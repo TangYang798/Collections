@@ -7,10 +7,16 @@ public class DelAOSPTmpFiles{
         Runtime.getRuntime().exec("sudo updatedb").waitFor();
         Process p = Runtime.getRuntime().exec("locate tmp_pa");
         BufferedReader br = new BufferedReader(new InputStreamReader(p.getInputStream()));
-        for(String str=br.readLine(); str!=null; str=br.readLine()){
+        String str=br.readLine();
+	if(str != null){
+		for(; str!=null; str=br.readLine()){
             System.out.print(str + "\t");
-            System.out.println(new File(str).delete());
+            System.out.println(new File(str).delete());//true false
         }
+	}else{
+		System.out.println("no target file");
+	}
+	System.out.println("finished");
         br.close();
         p.destroy();
     }
