@@ -1,3 +1,7 @@
+/**
+* find ~/.jenkins/workspace/Lineage/.repo -type f -name 'tmp_pa*' -delete
+*/
+
 import java.io.File;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
