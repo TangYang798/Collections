@@ -1,0 +1,5 @@
+kill `ps -ef | grep something | cut -c 10-15 | tr -d '\n'`
+locate
+ncdu
+find path -type f -name 'something' -delete
+sed -i 's/old/new/[g]' path/to/file
