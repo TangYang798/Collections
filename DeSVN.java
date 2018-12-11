@@ -3,6 +3,9 @@ import java.io.File;
 
 public class DeSVN {
   
+  public static void main (String[] args) {
+    delSVN("qaz");
+  }
   
   public static void delSVN (String path) {
     File file = new File(path);
@@ -23,4 +26,5 @@ public class DeSVN {
       }
     }
   }
+  
 }
