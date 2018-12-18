@@ -11,17 +11,18 @@ import java.util.zip.ZipOutputStream;
  * <p>
  * Attention:
  * 1. For deleted files and files in project root, DO NOT export to patch file.
+ * 2. Don't know how to handle inner class.
  */
 public class PackAddon {
 
-    public static String workspacePath = ".";
-    public static String projectName = "r";
-    public static String webAppPath = "WebContent";
-    public static String srcPrefix = "src";
-    public static String webAppName = projectName;
-    public static String projectPath = workspacePath + "/" + projectName;
-    public static String patchFile = workspacePath + "/patch_" + projectName;
-    public static String classesPath = projectPath + "/" + webAppPath + "/WEB-INF/classes";
+    public static final String projectName = "r";
+    public static final String srcPrefix = "src";
+    public static final String workspacePath = ".";
+    public static String webAppPath;
+    public static String webAppName;
+    public static String projectPath;
+    public static String patchFile;
+    public static String classesPath;
     public static String suffix;
 
     public static void main(String[] args) throws IOException {
@@ -37,6 +38,16 @@ public class PackAddon {
 //                    "Output are projectName_date.zip and projectName_date.txt under workspace.");
 //            System.exit(2);
 //        }
+        if ("rr".equals(projectName)) {
+            webAppPath = "WebContent";
+            webAppName = projectName;
+        } else {
+            System.out.println("no project [" + projectName + "] defined.");
+            System.exit(2);
+        }
+        projectPath = workspacePath + "/" + projectName;
+        patchFile = workspacePath + "/patch_" + projectName;
+        classesPath = projectPath + "/" + webAppPath + "/WEB-INF/classes";
         Date now = new Date();
         SimpleDateFormat sdf = new SimpleDateFormat("_yyyy-MM-dd"); // HH-mm-ss
         suffix = sdf.format(now);
