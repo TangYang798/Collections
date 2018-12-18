@@ -3,3 +3,4 @@ locate
 ncdu
 find path -type f -name 'something' -delete
 sed -i 's/old/new/[g]' path/to/file
+git diff --name-status HEAD~8 HEAD | grep -E '^[A,M].*cde|cc' | cut -f 2 | sed -e 's_old_new_' -e 's_old1_new1_'
